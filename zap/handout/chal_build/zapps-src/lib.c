@@ -1,4 +1,6 @@
-// gcc -o ./ld-linux-x86-64.so.2 ./lib.c -fPIC -nostdlib
+#if 0
+gcc -o ./ld-linux-x86-64.so.2 ./lib.c -fPIC -nostdlib
+#endif
 #include <elf.h>
 #include <fcntl.h>
 #include <limits.h>

